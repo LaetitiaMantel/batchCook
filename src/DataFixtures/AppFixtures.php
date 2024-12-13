@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
         $unit = [ "g","cl","CaS","CaC","pièce",];
 
         
-        // Création de 50 recettes avec 5 à 10 ingredients par recette
+        // Création de 50 recettes
         for ($i = 0; $i < 50; $i ++) {
             $recipe = new Recipe;
             $recipe->setName($faker->foodName());
@@ -43,7 +43,7 @@ class AppFixtures extends Fixture
             $ingredient = new Ingredient;
             $ingredient->setName($faker->vegetableName());
             $ingredient->setUnit($unit[array_rand($unit)]);
-            for ($j = 0; $j < random_int(5, 10); $j ++){
+            for ($j = 0; $j < random_int(2, 5); $j ++){
                 $ingredient->addRecipe($faker->unique()->randomElement($this->recipes));
             }
             $manager->persist($ingredient);
